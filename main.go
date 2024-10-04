@@ -2,12 +2,12 @@ package main
 
 import (
 	"fmt"
-	"net/http"
-	"task2/templates"
 	"github.com/a-h/templ"
+	"net/http"
+	"golangproject/templates"
 )
 
-func main () {
+func main() {
 	fmt.Println("Hello")
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, "ToolBar.html") // Serve the index.html file
@@ -36,14 +36,16 @@ func createRectangle(w http.ResponseWriter, r *http.Request) {
 func createCircle(w http.ResponseWriter, r *http.Request) {
 	component := templates.CreateCircle()
 	handler := templ.Handler(component) // To render data on browser
-	handler.ServeHTTP(w, r)}
+	handler.ServeHTTP(w, r)
+}
 
 func createArc(w http.ResponseWriter, r *http.Request) {
 	component := templates.CreateArc()
 	handler := templ.Handler(component) // To render data on browser
-	handler.ServeHTTP(w, r)}
+	handler.ServeHTTP(w, r)
+}
 
-func toggleDropdown (w http.ResponseWriter, r *http.Request) {
+func toggleDropdown(w http.ResponseWriter, r *http.Request) {
 	component := templates.ToggleDropdown()
 	handler := templ.Handler(component) // To render data on browser
 	handler.ServeHTTP(w, r)

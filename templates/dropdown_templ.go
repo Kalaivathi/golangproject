@@ -58,7 +58,7 @@ func ToggleDropdown() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div style=\"display: flex;\n\tflex-direction: column;\n\tjustify-content: center;\n\tbackground-color: rgb(62,81,114);\n\tposition: absolute;\n    padding: 16px;\n    line-height: 1.4rem;\n    border-radius: 8px;\n\tmargin-top: 8px;\n\tcolor: white;\"><span hx-post=\"/square\" hx-target=\"#canvas\" hx-swap=\"beforeend\">Square</span> <span hx-post=\"/rectangle\" hx-target=\"#canvas\" hx-swap=\"beforeend\">Rectangle</span> <span hx-post=\"/circle\" hx-target=\"#canvas\" hx-swap=\"beforeend\">Circle</span> <span hx-post=\"/arc\" hx-target=\"#canvas\" hx-swap=\"beforeend\">Arc</span></div>")
+		templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 1)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

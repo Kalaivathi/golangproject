@@ -1,4 +1,4 @@
-module task2
+module golangproject
 
 go 1.23.1
 
