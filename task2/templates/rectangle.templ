@@ -1,0 +1,46 @@
+package templates
+
+templ CreateRectangle() {
+    <script>
+      let resizing = false;
+
+      const svg = document.getElementById("svg-rectangle")
+      const rect = document.getElementById("rectangle")
+      const resize_handle = document.getElementById("resize-handle")
+
+      //mouse down
+      resize_handle.addEventListener('mousedown', (e) => {
+         resizing = true;
+         e.preventDefault();
+      })
+
+      //mouse move
+      resize_handle.addEventListener('mousemove', (e) => {
+        
+        if (resizing) {
+            const newWidth = e.clientX - svg.getBoundingClientRect().left
+            const newHeight = e.clientY - svg.getBoundingClientRect().top
+
+            if (newWidth > 50) {
+                rect.setAttribute('width', newWidth)
+                resize_handle.setAttribute('cx', newWidth)
+            }
+
+            if (newHeight > 10) {
+                 rect.setAttribute('height', newHeight)
+                 resize_handle.setAttribute('cy', newHeight)
+            }
+        }
+      })
+
+        // Mouse up event to stop resizing
+    document.addEventListener('mouseup', function() {
+        isResizing = false;
+    });
+
+    </script>
+    <svg id="svg-rectangle" width="150" height="100">
+    <rect width="150" height="100" style="fill:blue;" id="rectangle"/> 
+    <circle id="resize-handle" cx="150" cy="100" r="5" fill="red" cursor="nwse-resize" />
+    </svg>
+}

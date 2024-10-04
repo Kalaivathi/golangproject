@@ -1,0 +1,36 @@
+package templates
+
+css drop () {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-color: rgb(62,81,114);
+	position: absolute;
+    padding: 16px;
+    line-height: 1.4rem;
+    border-radius: 8px;
+	margin-top: 8px;
+	color: white;
+}
+
+css display() {
+	display: none;
+}
+templ ToggleDropdown() {
+	<div style="display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-color: rgb(62,81,114);
+	position: absolute;
+    padding: 16px;
+    line-height: 1.4rem;
+    border-radius: 8px;
+	margin-top: 8px;
+	color: white;">
+		<span hx-post="/square" hx-target="#canvas" hx-swap="beforeend">Square</span>
+		<span hx-post="/rectangle" hx-target="#canvas" hx-swap="beforeend">Rectangle</span>
+		<span hx-post="/circle" hx-target="#canvas" hx-swap="beforeend">Circle</span>
+		<span hx-post="/arc" hx-target="#canvas" hx-swap="beforeend">Arc</span>
+	</div>
+
+}

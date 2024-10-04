@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://unpkg.com/htmx.org@1.9.2"></script>
+    <style>
+        #canvas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .shape {
+            margin: 5px;
+            display: inline-block;
+        }
+
+        .button {
+            width: 100%;
+            padding: 8px;
+            background-color: whitesmoke;
+            border-radius: 8px;
+            border-color: whitesmoke;
+        }
+
+        .mr-16 {
+            margin-right: 16px;
+        }
+
+        .tool-bar {
+            background-color: #9fb6c3;
+            padding: 16px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .main-content {
+            background-color: whitesmoke;
+            width: 80%;
+            height: calc(100vh - 150px);
+            border-radius: 16px;
+            padding: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-y: auto;
+        }
+
+        .dropdown {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            background-color: rgb(62, 81, 114);
+            position: absolute;
+            padding: 16px;
+            line-height: 1.4rem;
+            border-radius: 8px;
+            margin-top: 8px;
+            color: white;
+            top: 5%;
+        }
+        .show {
+            display: flex !important;
+        }
+        .w-100 {
+            width: 100px
+        }
+    </style>
+</head>
+
+<body style="margin: 0px;">
+    <div style="display: flex; flex-direction: column; justify-content: center;">
+        <div class="tool-bar">
+            <div class="mr-16 w-100">
+                <button hx-post="/square" hx-target="#canvas" hx-swap="beforeend" class="mr-16 button">Square</button>
+            </div>
+            <div class="mr-16 w-100">
+                <button hx-post="/rectangle" hx-target="#canvas" hx-swap="beforeend"
+                    class="mr-16 button">Rectangle</button>
+            </div>
+            <div class="mr-16 w-100">
+                <button hx-post="/circle" hx-target="#canvas" hx-swap="beforeend" class="mr-16 button">Circle</button>
+            </div>
+            <div class="mr-16 w-100">
+                <button hx-post="/arc" hx-target="#canvas" hx-swap="beforeend" class="button">Arc</button>
+            </div>
+            <div style="display: flex; flex-direction: column;" class="mr-16 w-100">
+                <button class="mr-16 button" hx-trigger="click"  hx-on="click: toggleDropdown()">Replace</button>
+                <div id="dropdown" class="dropdown">
+                    <span hx-post="/square" hx-target="#canvas" hx-on="click: hideDropdown()"
+                        hx-swap="beforeend">Square</span>
+                    <span hx-post="/rectangle" hx-target="#canvas" hx-on="click: hideDropdown()"
+                        hx-swap="beforeend">Rectangle</span>
+                    <span hx-post="/circle" hx-target="#canvas" hx-on="click: hideDropdown()"
+                        hx-swap="beforeend">Circle</span>
+                    <span hx-post="/arc" hx-target="#canvas" hx-swap="beforeend" hx-on="click: hideDropdown()">Arc</span>
+                </div>
+            </div>
+        </div>
+        <div style="display: flex; justify-content: center;">
+            <svg id="canvas" class="main-content"  xmlns="http://www.w3.org/2000/svg"></svg>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function toggleDropdown() {
+        var dropdown = document.getElementById('dropdown');
+        dropdown.classList.toggle('show');
+    }
+
+    function hideDropdown() {
+        var dropdown = document.getElementById('dropdown');
+        dropdown.classList.remove('show');
+    }
+</script>
